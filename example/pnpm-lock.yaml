@@ -7,6 +7,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  use-input-handler:
+    specifier: 1.0.1
+    version: 1.0.1
 
 devDependencies:
   '@types/react':
@@ -1694,6 +1697,10 @@ packages:
     dependencies:
       punycode: 2.3.0
     dev: true
+
+  /use-input-handler@1.0.1:
+    resolution: {integrity: sha512-p7b5NmNXLQszOpkXgwdwRp+RwTIxVatyCICYNwYnJ/uyIdv4hVVi43L/n6UwQXH3MXR+GpqcrTgeEJfIY+wROg==}
+    dev: false
 
   /vite@4.3.2:
     resolution: {integrity: sha512-9R53Mf+TBoXCYejcL+qFbZde+eZveQLDYd9XgULILLC1a5ZwPaqgmdVpL8/uvw2BM/1TzetWjglwm+3RO+xTyw==}
