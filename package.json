@@ -1,0 +1,26 @@
+{
+  "name": "use-input-handler",
+  "version": "0.0.1-beta",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "keywords": [
+    "custom hook",
+    "react",
+    "input",
+    "handler"
+  ],
+  "author": "Aarón Montes",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "react": "^18.2.0",
+    "typescript": "^5.0.4"
+  }
+}
