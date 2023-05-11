@@ -1,6 +1,6 @@
 {
   "name": "use-input-handler",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-beta",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
