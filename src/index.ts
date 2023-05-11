@@ -4,7 +4,7 @@ import Config, { UseInputType } from './types';
 const useInputHandler = (initialValue: UseInputType, config: Config = {}) => {
   const [value, setValue] = useState(initialValue);
 
-  const setValueModified = (event: Event) => {
+  const setValueModified = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target as any;
     const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : value;
     if (!value && config.allowNull) {
@@ -25,7 +25,7 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}) => {
     return typeof valueToTest === 'function';
   }
 
-  return [value, setValueModified]
+  return [value, setValueModified];
 }
 
 export default useInputHandler;
