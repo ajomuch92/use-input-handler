@@ -20,11 +20,11 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, setValue] = useInputHandler(''); // pass desired initial value
+    const [value, changeHandler] = useInputHandler(''); // pass desired initial value
 
     return (
       <>
-        <input type="text" onChange={setValue} />
+        <input type="text" onChange={changeHandler} />
         <p>
           { value }
         </p>
@@ -39,13 +39,13 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, setValue] = useInputHandler(0, {
+    const [value, changeHandler] = useInputHandler(0, {
       parser: (newValue: any) => parseFloat(value),
     });
 
     return (
       <>
-        <input type="number" onChange={setValue} />
+        <input type="number" onChange={changeHandler} />
         <p>
           { value }
         </p>
@@ -60,20 +60,20 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, setValue] = useInputHandler(0, {
-        parser: (newValue: any) => parseFloat(value),
-        validator: (valueToValidate: any) => {
-          return typeof valueToValidate === 'number' && valueToValidate > 18;
-        },
-        onValidatorFail: () => {
-          alert('Age must be greater than 18 years old');
-        },
-        allowNull: true,
+    const [value, changeHandler] = useInputHandler(0, {
+      parser: (newValue: any) => parseFloat(value),
+      validator: (valueToValidate: any) => {
+        return typeof valueToValidate === 'number' && valueToValidate > 18;
+      },
+      onValidatorFail: () => {
+        alert('Age must be greater than 18 years old');
+      },
+      allowNull: true,
     });
 
     return (
       <>
-        <input type="number" onChange={setValue} placeholder="Age"/>
+        <input type="number" onChange={changeHandler} placeholder="Age"/>
         <p>
           { value }
         </p>
