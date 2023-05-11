@@ -92,7 +92,7 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 | validator | (str: UseInputType) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
-| parser | (str: String|string) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
+| parser | (str: String) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
 
 All these values are optional.
 
