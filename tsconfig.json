@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ES6", 
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "lib",
+    "esModuleInterop": true,
+    "skipLibCheck": true, 
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+  },
+  "include": [
+    "src"
+  ]
+}
