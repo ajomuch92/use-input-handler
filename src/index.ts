@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Config, { UseInputType } from './types';
 
-const useInputHandler = (initialValue: UseInputType, config: Config = {}) => {
+const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseInputType, (event: React.ChangeEvent<HTMLInputElement>) => void] => {
   const [value, setValue] = useState(initialValue);
 
   const setValueModified = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target as any;
+    const { value } = event.target;
     const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : value;
     if (!value && config.allowNull) {
       setValue(null);
