@@ -10,7 +10,7 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
     if (!value && config.allowNull) {
       setValue(null);
     } else if (isFunction(config.validator)) {
-      const isValid = config.validator(value);
+      const isValid = config.validator(newValue);
       if (isValid) {
         setValue(newValue);
         if (isFunction(config.onValidatorSuccess)) {
