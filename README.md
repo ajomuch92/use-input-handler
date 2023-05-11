@@ -26,7 +26,7 @@ Install use-input-handler with NPM
       <>
         <input type="text" onChange={setValue} />
         <p>
-            { value }
+          { value }
         </p>
       </>
     )
@@ -40,14 +40,14 @@ Install use-input-handler with NPM
 
   const myComponent = () => {
     const [value, setValue] = useInputHandler(0, {
-        parser: (newValue: any) => parseFloat(value),
+      parser: (newValue: any) => parseFloat(value),
     });
 
     return (
       <>
         <input type="number" onChange={setValue} />
         <p>
-            { value }
+          { value }
         </p>
       </>
     )
@@ -63,18 +63,19 @@ Install use-input-handler with NPM
     const [value, setValue] = useInputHandler(0, {
         parser: (newValue: any) => parseFloat(value),
         validator: (valueToValidate: any) => {
-            return typeof valueToValidate === 'number' && valueToValidate > 18;
+          return typeof valueToValidate === 'number' && valueToValidate > 18;
         },
         onValidatorFail: () => {
-            alert('Age must be greater than 18 years old');
-        }
+          alert('Age must be greater than 18 years old');
+        },
+        allowNull: true, // this will set null as value when input is empty
     });
 
     return (
       <>
         <input type="number" onChange={setValue} placeholder="Age"/>
         <p>
-            { value }
+          { value }
         </p>
       </>
     )
