@@ -89,7 +89,7 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 | Name | Type | Description |
 | --------- | --------- | --------- |
 | allowNull | Boolean | This will set null as value when input is empty. |
-| validator | (str: UseInputType) => Boolean|boolean; | Validator method before set the value. If validation is false, the value will not be set. |
+| validator | (str: UseInputType) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
 | parser | (str: String|string) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
