@@ -10,6 +10,9 @@
   "scripts": {
     "build": "npx tsc"
   },
+  "repository": {
+    "url": "https://github.com/ajomuch92/use-input-handler"
+  },
   "keywords": [
     "custom hook",
     "react",
