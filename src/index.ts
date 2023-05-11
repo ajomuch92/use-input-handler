@@ -13,6 +13,9 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
       const isValid = config.validator(value);
       if (isValid) {
         setValue(newValue);
+        if (isFunction(config.onValidatorSuccess)) {
+          config.onValidatorSuccess();
+        }
       } else if (isFunction(config.onValidatorFail)) {
         config.onValidatorFail();
       }
