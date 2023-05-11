@@ -22,12 +22,14 @@ Install use-input-handler with NPM
   const myComponent = () => {
     const [value, setValue] = useInputHandler(''); // pass desired initial value
 
-    return <>
+    return (
+      <>
         <input type="text" onChange={setValue} />
         <p>
             { value }
         </p>
-    </>
+      </>
+    )
   }
 ```
 
@@ -41,12 +43,14 @@ Install use-input-handler with NPM
         parser: (newValue: any) => parseFloat(value),
     });
 
-    return <>
+    return (
+      <>
         <input type="number" onChange={setValue} />
         <p>
             { value }
         </p>
-    </>
+      </>
+    )
   }
 ```
 
@@ -66,15 +70,18 @@ Install use-input-handler with NPM
         }
     });
 
-    return <>
+    return (
+      <>
         <input type="number" onChange={setValue} placeholder="Age"/>
         <p>
             { value }
         </p>
-    </>
+      </>
+    )
   }
 ```
 
+See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/example)
 
 
 
