@@ -68,7 +68,7 @@ Install use-input-handler with NPM
         onValidatorFail: () => {
           alert('Age must be greater than 18 years old');
         },
-        allowNull: true, // this will set null as value when input is empty
+        allowNull: true,
     });
 
     return (
@@ -84,7 +84,17 @@ Install use-input-handler with NPM
 
 See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/example)
 
+### Config parameter 
 
+| Name | Type | Description |
+| --------- | --------- | --------- |
+| allowNull | Boolean | This will set null as value when input is empty. |
+| validator | (str: UseInputType) => Boolean|boolean; | Validator method before set the value. If validation is false, the value will not be set. |
+| onValidatorSuccess | Function | Method call when validation was successfully. |
+| onValidatorFail | Function | Method call when validation was not successfully. |
+| parser | (str: String|string) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
+
+All these values are optional.
 
 ## License
 
