@@ -1,7 +1,7 @@
 
 # Use Input Handler
 
-A simple custom hook to use as input change event handler
+A simple custom hook for React to use as input change event handler.
 
 
 ## Installation
@@ -20,14 +20,21 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, changeHandler] = useInputHandler(''); // pass desired initial value
+    const [value, changeHandler, setValue] = useInputHandler(''); // pass desired initial value
+
+    const buttonClick = () => {
+      setValue('');
+    };
 
     return (
       <>
-        <input type="text" onChange={changeHandler} />
+        <input type="text" value={value} onChange={changeHandler} />
         <p>
           { value }
         </p>
+        <button onClick={buttonClick}>
+          Clear
+        </button>
       </>
     )
   }
