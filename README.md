@@ -100,8 +100,13 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
 | parser | (str: String) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
+| asNumber | Boolean | Boolean value to transform the input into a number |
+| trim | Boolean | Boolean value to trime the input result |
 
-All these values are optional.
+All these values are optional. The last two options are applied if there is no a parser method.
+
+## To Do
+* Add tests
 
 ## License
 
