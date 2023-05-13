@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Config, { UseInputType } from './types';
 
-const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseInputType, (event: React.ChangeEvent<HTMLInputElement>) => void] => {
+const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseInputType, (event: React.ChangeEvent<HTMLInputElement>) => void, React.Dispatch<React.SetStateAction<string | number | String | Number | Date>>] => {
   const [value, setValue] = useState(initialValue);
 
-  const setValueModified = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : value;
     if (!value && config.allowNull) {
@@ -28,7 +28,7 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
     return typeof valueToTest === 'function';
   }
 
-  return [value, setValueModified];
+  return [value, onChangeEventHandler, setValue];
 }
 
 export default useInputHandler;
