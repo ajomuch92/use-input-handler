@@ -6,7 +6,7 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
 
   const onChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : value;
+    const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : transformInput(value);
     if (!value && config.allowNull) {
       setValue(null);
     } else if (isFunction(config.validator)) {
@@ -26,6 +26,16 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
 
   const isFunction = (valueToTest: any): Boolean => {
     return typeof valueToTest === 'function';
+  }
+
+  const transformInput = (valueToTransform: UseInputType): Number | String | UseInputType => {
+    if (config.asNumber) {
+      return parseFloat(valueToTransform.toString())
+    }
+    if (config.trim) {
+      return `${valueToTransform}`.trim();
+    }
+    return valueToTransform;
   }
 
   return [value, onChangeEventHandler, setValue];
