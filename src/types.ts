@@ -6,4 +6,6 @@ export default interface Config {
   onValidatorSuccess?: Function;
   onValidatorFail?: Function;
   parser?: (str: String|string) => UseInputType;
+  asNumber?: Boolean | boolean;
+  trim?: Boolean | boolean;
 }
