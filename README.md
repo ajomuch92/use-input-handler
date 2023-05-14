@@ -8,6 +8,7 @@ A simple custom hook for React to use as input change event handler.
 * Adding tests.
 * Adding more usefull configurations to use the hook (number, trim).
 * Removing allow null configuration.
+* Returning setValue method to manipulate the value as you want(see example below)
 
 ## Installation
 
