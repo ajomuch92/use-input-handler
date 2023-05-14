@@ -4,6 +4,11 @@
 A simple custom hook for React to use as input change event handler.
 
 
+### New Features 💥
+* Adding tests.
+* Adding more usefull configurations to use the hook (number, trim).
+* Removing allow null configuration.
+
 ## Installation
 
 Install use-input-handler with NPM
@@ -95,7 +100,6 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 
 | Name | Type | Description |
 | --------- | --------- | --------- |
-| allowNull | Boolean | This will set null as value when input is empty. |
 | validator | (str: UseInputType) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
@@ -106,7 +110,7 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 All these values are optional. The last two options are applied if there is no a parser method.
 
 ## To Do
-* Add tests
+* Add more tests
 
 ## License
 
