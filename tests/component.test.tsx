@@ -10,6 +10,14 @@ it('Single use of the hook', () => {
   expect(input.value).toBe('hello');
 });
 
+it('Single use of the hook with empty string', () => {
+  render(<InputComponent />);
+  const input = screen.getByRole('textbox') as HTMLInputElement;
+  fireEvent.change(input, { target: { value: '' } });
+  expect(input.value).toBe('');
+});
+
+
 it('Use of hook with trim', () => {
   render(<InputComponent trim={true}/>);
   const input = screen.getByRole('textbox') as HTMLInputElement;
