@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import Config, { UseInputType } from './types';
 
-const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseInputType, (event: React.ChangeEvent<HTMLInputElement>) => void, React.Dispatch<React.SetStateAction<string | number | String | Number | Date>>] => {
+const useInputHandler = (initialValue: UseInputType, config: Config = {}):
+  [UseInputType, (event: React.ChangeEvent<HTMLInputElement>) => void, React.Dispatch<React.SetStateAction<string | number | String | Number | Date>>] => {
   const [value, setValue] = useState(initialValue);
 
   const onChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : transformInput(value);
-    if (!value && config.allowNull) {
-      setValue(null);
-    } else if (isFunction(config.validator)) {
+    if (isFunction(config.validator)) {
       const isValid = config.validator(newValue);
       if (isValid) {
         setValue(newValue);
@@ -43,4 +42,4 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [UseI
 
 export default useInputHandler;
 
-export { UseInputType };
+export { UseInputType, Config };
