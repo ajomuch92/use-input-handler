@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import 'jest';
+import jest from 'jest';
 import { InputComponent, NumberInputComponent } from './component';
 
 it('Single use of the hook', () => {
@@ -17,6 +17,13 @@ it('Single use of the hook with empty string', () => {
   expect(input.value).toBe('');
 });
 
+
+it('Use of the hook with debounce value', () => {
+  render(<InputComponent debounce={800} />);
+  const input = screen.getByRole('textbox') as HTMLInputElement;
+  fireEvent.change(input, { target: { value: 'Hello' } });
+  expect(input.value).toBe('');
+});
 
 it('Use of hook with trim', () => {
   render(<InputComponent trim={true}/>);
