@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function App() {
   const [message, setMessage] = useState('');
-  const [value, setValue] = useInputHandler('');
+  const [value, setValue] = useInputHandler('', { debounce: 800 });
   const [value2, setValue2] = useInputHandler(0, {
     parser: (newValue: any) => parseFloat(newValue),
     validator: (valueToValidate: any) => {
