@@ -9,6 +9,7 @@ A simple custom hook for React to use as input change event handler.
 * Adding more usefull configurations to use the hook (number, trim).
 * Removing allow null configuration.
 * Returning setValue method to manipulate the value as you want(see example below)
+* Adding debounce flag to execute the change after after a number of milliseconds.
 
 ## Installation
 
@@ -104,6 +105,7 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 | validator | (str: UseInputType) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
+| debounce | Number | Number of milliseconds to execute the change handler after the event itself. |
 | parser | (str: String) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
 | asNumber | Boolean | Boolean value to transform the input into a number |
 | trim | Boolean | Boolean value to trime the input result |
