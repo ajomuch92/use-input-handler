@@ -7,4 +7,5 @@ export default interface Config {
   parser?: (str: String|string) => UseInputType;
   asNumber?: Boolean | boolean;
   trim?: Boolean | boolean;
+  debounce?: Number | number;
 }
