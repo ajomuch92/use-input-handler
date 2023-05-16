@@ -8,8 +8,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   use-input-handler:
-    specifier: 1.0.1
-    version: 1.0.1
+    specifier: 1.2.0
+    version: 1.2.0
 
 devDependencies:
   '@types/react':
@@ -1698,8 +1698,8 @@ packages:
       punycode: 2.3.0
     dev: true
 
-  /use-input-handler@1.0.1:
-    resolution: {integrity: sha512-p7b5NmNXLQszOpkXgwdwRp+RwTIxVatyCICYNwYnJ/uyIdv4hVVi43L/n6UwQXH3MXR+GpqcrTgeEJfIY+wROg==}
+  /use-input-handler@1.2.0:
+    resolution: {integrity: sha512-Uv/ZXiTDBHStegf9+LaVGx3sKsgbtFyccUNlqf1SyM3ebGlHeUrAri4gZn+RshI51RvzlIJZdRrD8Zan8wkEcA==}
     dev: false
 
   /vite@4.3.2:
