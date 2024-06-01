@@ -1,7 +1,7 @@
 
 # Use Input Handler
 
-A simple custom hook for React to use as input change event handler.
+A simple and light custom hook for React to use as input change event handler.
 
 ### Breaking changes
 * Adding support for dynamic types using <T>
