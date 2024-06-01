@@ -3,6 +3,10 @@
 
 A simple custom hook for React to use as input change event handler.
 
+### Breaking changes
+* Adding support for dynamic types using <T>
+* Removing allow null from config
+
 
 ### New Features 💥
 * Adding tests.
@@ -27,7 +31,7 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, changeHandler, setValue] = useInputHandler(''); // pass desired initial value
+    const [value, changeHandler, setValue] = useInputHandler<string>('');
 
     const buttonClick = () => {
       setValue('');
@@ -53,8 +57,8 @@ Install use-input-handler with NPM
   import useInputHandler from 'use-input-handler';
 
   const myComponent = () => {
-    const [value, changeHandler] = useInputHandler(0, {
-      parser: (newValue: any) => parseFloat(value),
+    const [value, changeHandler] = useInputHandler<number>(0, {
+      parser: (newValue: string) => parseFloat(value),
     });
 
     return (
@@ -75,14 +79,13 @@ Install use-input-handler with NPM
 
   const myComponent = () => {
     const [value, changeHandler] = useInputHandler(0, {
-      parser: (newValue: any) => parseFloat(value),
-      validator: (valueToValidate: any) => {
+      parser: (newValue: string) => parseFloat(value),
+      validator: (valueToValidate: string) => {
         return typeof valueToValidate === 'number' && valueToValidate > 18;
       },
       onValidatorFail: () => {
         alert('Age must be greater than 18 years old');
       },
-      allowNull: true,
     });
 
     return (
@@ -102,11 +105,11 @@ See an example [here](https://github.com/ajomuch92/use-input-handler/tree/main/e
 
 | Name | Type | Description |
 | --------- | --------- | --------- |
-| validator | (str: UseInputType) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
+| validator | (str: <T>) => Boolean | Validator method before set the value. If validation is false, the value will not be set. |
 | onValidatorSuccess | Function | Method call when validation was successfully. |
 | onValidatorFail | Function | Method call when validation was not successfully. |
 | debounce | Number | Number of milliseconds to execute the change handler after the event itself. |
-| parser | (str: String) => UseInputType | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
+| parser | (str: String) => <T> | Method use to manipulate the value passed from input on change event. This event is executed before validation method. |
 | asNumber | Boolean | Boolean value to transform the input into a number |
 | trim | Boolean | Boolean value to trime the input result |
 
