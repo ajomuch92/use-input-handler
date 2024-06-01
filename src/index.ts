@@ -1,17 +1,27 @@
 import { useState } from 'react';
-import Config, { UseInputType } from './types';
 
-const useInputHandler = (initialValue: UseInputType, config: Config = {}): [
-  UseInputType,
+type Config<T> = {
+  parser?: (value: string) => T;
+  validator?: (value: T) => boolean;
+  onValidatorSuccess?: () => void;
+  onValidatorFail?: () => void;
+  debounce?: number;
+  asNumber?: boolean;
+  trim?: boolean;
+};
+
+const useInputHandler = <T>(initialValue: T, config: Config<T> = {}): [
+  T,
   (event: React.ChangeEvent<HTMLInputElement>) => void,
-  React.Dispatch<React.SetStateAction<string | number | String | Number | Date>>
+  React.Dispatch<React.SetStateAction<T>>
 ] => {
-  const [value, setValue] = useState(initialValue);
-  const [debounce, setDebounce] = useState(undefined);
+  const [value, setValue] = useState<T>(initialValue);
+  const [debounce, setDebounce] = useState<NodeJS.Timeout | undefined>(undefined);
 
   const onChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    const newValue: UseInputType = isFunction(config.parser) ? config.parser(value) : transformInput(value);
+    const { value: inputValue } = event.target;
+    const newValue: T = isFunction(config.parser) ? config.parser(inputValue) : transformInput(inputValue);
+
     if (isFunction(config.validator)) {
       const isValid = config.validator(newValue);
       if (isValid) {
@@ -25,40 +35,39 @@ const useInputHandler = (initialValue: UseInputType, config: Config = {}): [
     } else {
       setGlobalValue(newValue);
     }
-  }
+  };
 
-  const isFunction = (valueToTest: any): Boolean => {
+  const isFunction = (valueToTest: any): valueToTest is Function => {
     return typeof valueToTest === 'function';
-  }
+  };
 
-  const setGlobalValue = (newValue: UseInputType) => {
+  const setGlobalValue = (newValue: T) => {
     if (typeof config.debounce === 'number') {
-      if (debounce) {
+      if (debounce !== undefined) {
         clearTimeout(debounce);
       }
       const debounceId = setTimeout(() => {
         setValue(newValue);
-        clearTimeout(debounce);
+        setDebounce(undefined);
       }, config.debounce);
       setDebounce(debounceId);
     } else {
       setValue(newValue);
     }
-  }
+  };
 
-  const transformInput = (valueToTransform: UseInputType): Number | String | UseInputType => {
+  const transformInput = (valueToTransform: string): T => {
     if (config.asNumber) {
-      return parseFloat(valueToTransform.toString())
+      return parseFloat(valueToTransform) as unknown as T;
     }
     if (config.trim) {
-      return `${valueToTransform}`.trim();
+      return valueToTransform.trim() as unknown as T;
     }
-    return valueToTransform;
-  }
+    return valueToTransform as unknown as T;
+  };
 
   return [value, onChangeEventHandler, setValue];
-}
+};
 
 export default useInputHandler;
-
-export { UseInputType, Config };
+export { Config };
