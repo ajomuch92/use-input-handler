@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, SetStateAction, Dispatch } from 'react';
 
 type Config<T> = {
   parser?: (value: string) => T;
@@ -12,13 +12,13 @@ type Config<T> = {
 
 const useInputHandler = <T>(initialValue: T, config: Config<T> = {}): [
   T,
-  (event: React.ChangeEvent<HTMLInputElement>) => void,
-  React.Dispatch<React.SetStateAction<T>>
+  (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLTextAreaElement>) => void,
+  Dispatch<SetStateAction<T>>
 ] => {
   const [value, setValue] = useState<T>(initialValue);
   const [debounce, setDebounce] = useState<NodeJS.Timeout | undefined>(undefined);
 
-  const onChangeEventHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeEventHandler = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLTextAreaElement>) => {
     const { value: inputValue } = event.target;
     const newValue: T = isFunction(config.parser) ? config.parser(inputValue) : transformInput(inputValue);
 
