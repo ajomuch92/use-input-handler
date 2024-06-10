@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import jest from 'jest';
-import { InputComponent, NumberInputComponent } from './component';
+import { InputComponent, NumberInputComponent, TextareaComponent, SelectComponent } from './component';
 
 it('Single use of the hook', () => {
   render(<InputComponent />);
@@ -45,4 +44,18 @@ it('Use of hook to parse as number', () => {
   fireEvent.change(input, { target: { value: '4' } });
   const out = screen.getByRole('out');
   expect(out.title).toBe('number');
+});
+
+it('Single use of the hook with textarea', () => {
+  render(<TextareaComponent />);
+  const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
+  fireEvent.change(textarea, { target: { value: 'hello textarea' } });
+  expect(textarea.value).toBe('hello textarea');
+});
+
+it('Single use of the hook with select', () => {
+  render(<SelectComponent />);
+  const input = screen.getByRole('textbox') as HTMLSelectElement;
+  fireEvent.change(input, { target: { value: '1' } });
+  expect(input.value).toBe('1');
 });
