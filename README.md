@@ -9,11 +9,12 @@ A simple and light custom hook for React to use as input change event handler.
 
 
 ### New Features 💥
-* Adding tests.
+* Adding more tests.
 * Adding more usefull configurations to use the hook (number, trim).
 * Removing allow null configuration.
-* Returning setValue method to manipulate the value as you want(see example below)
+* Returning setValue method to manipulate the value as you want(see example below).
 * Adding debounce flag to execute the change after after a number of milliseconds.
+* Adding support for selects and textarea controls.
 
 ## Installation
 
